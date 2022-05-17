@@ -1,0 +1,8 @@
+---
+- name: molecule converge
+  hosts: all
+
+  tasks:
+  - name: include stns_server role
+    ansible.builtin.include_role:
+      name: stns_server

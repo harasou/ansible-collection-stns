@@ -1,0 +1,16 @@
+---
+- name: molecule converge
+  hosts: all
+
+  tasks:
+  - name: include stns_client role
+    ansible.builtin.include_role:
+      name: stns.stns.stns_client
+  - name: include stns_server role
+    ansible.builtin.include_role:
+      name: stns.stns.stns_server
+  - name: add sample user
+    ansible.builtin.copy:
+      src: user.conf
+      dest: /etc/stns/server/conf.d/user.conf
+    notify: restart stns

@@ -1,0 +1,8 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: include stns_client role
+      include_role:
+        name: stns_client

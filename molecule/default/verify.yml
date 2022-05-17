@@ -1,0 +1,9 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: Verify STNS is up and running
+      ansible.builtin.uri:
+        url: http://localhost:1104/v1/users?name=example
+        status_code: 200

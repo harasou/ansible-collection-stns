@@ -1,0 +1,1 @@
+{{ stns_server_config_default | combine(stns_server_config, recursive=True) | stns.stns.to_toml }}

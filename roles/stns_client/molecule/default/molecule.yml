@@ -1,0 +1,13 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: ubuntu-jammy
+    image: ubuntu:jammy
+    dockerfile: ../ubuntu-jammy.Dockerfile
+    # TODO: not work https://github.com/ansible-community/molecule-docker/blob/6437272f6988086f2b9af626902aca2886300cda/src/molecule_docker/playbooks/create.yml#L76
+    platform: linux/amd64
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

@@ -1,0 +1,5 @@
+---
+- name: restart cache-stnsd
+  ansible.builtin.service:
+    name: cache-stnsd
+    state: restarted

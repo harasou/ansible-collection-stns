@@ -1,0 +1,3 @@
+---
+- name: include STNS repository task
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/repo-{{ ansible_facts['os_family'] | lower }}.yml"

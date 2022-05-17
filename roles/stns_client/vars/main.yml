@@ -1,0 +1,5 @@
+---
+stns_client_config_default:
+  api_endpoint: 'http://localhost:1104/v1'
+  request_timeout: 3
+  request_retry: 3

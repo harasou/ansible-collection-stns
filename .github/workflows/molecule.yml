@@ -1,0 +1,31 @@
+---
+name: Molecule Test
+on: [push, pull_request]
+jobs:
+  molecule-test-with-python:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 2
+      matrix:
+        python_version: ['3.9', '3.10']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r .github/workflows/requirements/molecule.requirements.txt
+          ansible-galaxy install -r .github/workflows/requirements/ansible.requirements.yml
+      - name: Build and install collection
+        run: ansible-galaxy collection install $(basename $(ansible-galaxy collection build -f | awk -F" " '{print $NF}'))
+      - name: Test with molecule (roles/stns_client)
+        run: cd roles/stns_client; molecule --debug test --all
+      - name: Test with molecule (roles/stns_server)
+        run: cd roles/stns_server; molecule --debug test --all
+      - name: Test with molecule (integration)
+        run: molecule --debug test --all
