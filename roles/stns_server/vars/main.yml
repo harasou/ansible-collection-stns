@@ -1,0 +1,4 @@
+---
+stns_server_config_default:
+  port: 1104
+  include: "/etc/stns/server/conf.d/*"
