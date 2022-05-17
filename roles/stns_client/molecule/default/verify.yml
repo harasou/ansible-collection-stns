@@ -3,6 +3,11 @@
   hosts: all
 
   tasks:
-    - name: include stns_client role
-      include_role:
-        name: stns_client
+    - name: Stat stns-cached sock
+      ansible.builtin.stat:
+        path: /var/run/cache-stnsd.sock
+      register: cache_stnsd_sock
+    - name: Verify stns-cached sock
+      ansible.builtin.assert:
+        that:
+          - cache_stnsd_sock.stat.exists
