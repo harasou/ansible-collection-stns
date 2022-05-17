@@ -3,9 +3,9 @@
   hosts: all
 
   tasks:
-    - name: include stns_server role
+    - name: include server role
       include_role:
-        name: stns_server
+        name: server
       vars:
         stns_server_config:
           port: 1105

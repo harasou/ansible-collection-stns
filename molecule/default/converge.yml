@@ -3,12 +3,12 @@
   hosts: all
 
   tasks:
-  - name: include stns_client role
+  - name: include client role
     ansible.builtin.include_role:
-      name: stns.stns.stns_client
-  - name: include stns_server role
+      name: stns.stns.client
+  - name: include server role
     ansible.builtin.include_role:
-      name: stns.stns.stns_server
+      name: stns.stns.server
   - name: add sample user
     ansible.builtin.copy:
       src: user.conf

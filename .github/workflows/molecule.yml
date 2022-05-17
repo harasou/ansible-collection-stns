@@ -23,9 +23,9 @@ jobs:
           ansible-galaxy install -r .github/workflows/requirements/ansible.requirements.yml
       - name: Build and install collection
         run: ansible-galaxy collection install $(basename $(ansible-galaxy collection build -f | awk -F" " '{print $NF}'))
-      - name: Test with molecule (roles/stns_client)
-        run: cd roles/stns_client; molecule --debug test --all
-      - name: Test with molecule (roles/stns_server)
-        run: cd roles/stns_server; molecule --debug test --all
+      - name: Test with molecule (roles/client)
+        run: cd roles/client; molecule --debug test --all
+      - name: Test with molecule (roles/server)
+        run: cd roles/server; molecule --debug test --all
       - name: Test with molecule (integration)
         run: molecule --debug test --all

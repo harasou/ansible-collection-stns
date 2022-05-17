@@ -3,6 +3,6 @@
   hosts: all
 
   tasks:
-  - name: include stns_client role
+  - name: include client role
     ansible.builtin.include_role:
-      name: stns_client
+      name: client
