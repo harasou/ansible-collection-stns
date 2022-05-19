@@ -2,7 +2,17 @@ galaxy_info:
   author: stns
   description: STNS server role
   license: MIT
-  min_ansible_version: 2.1
+  min_ansible_version: '2.12'
   galaxy_tags: []
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+        - bullseye
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
+        - jammy
 dependencies:
-- common
+  - role: common
