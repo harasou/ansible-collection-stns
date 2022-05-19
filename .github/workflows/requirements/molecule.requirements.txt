@@ -1,6 +1,7 @@
 ansible-core
 ansible-lint
-molecule[lint,docker]
+molecule==3.6.0
+molecule-docker
 docker
 toml
 yamllint
