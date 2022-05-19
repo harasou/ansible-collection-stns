@@ -1,0 +1,11 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: stopped cache-stnsd
+      ansible.builtin.service:
+        name: cache-stnsd
+        state: stopped
+        enabled: false
+      check_mode: true

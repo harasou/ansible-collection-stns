@@ -1,0 +1,11 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: stopped stns
+      ansible.builtin.service:
+        name: stns
+        state: stopped
+        enabled: disable
+      check_mode: true

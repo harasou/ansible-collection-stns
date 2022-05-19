@@ -2,7 +2,7 @@
 - name: install stns
   ansible.builtin.package:
     name: "stns-v2{{ stns_version | default('') }}"
-    state: present
+    state: "{{ stns_server_state }}"
   notify: restart stns
 
 - name: start stns
@@ -10,12 +10,21 @@
     name: stns
     state: started
     enabled: true
+  when: stns_server_state != "absent"
+
+- name: stop stns
+  ansible.builtin.service:
+    name: stns
+    state: stopped
+    enabled: disable
+  when: stns_server_state == "absent"
 
 - name: create a STNS server directory
   ansible.builtin.file:
     path: /etc/stns/server/conf.d
     state: directory
     mode: '0755'
+  when: stns_server_state != "absent"
 
 - name: config STNS server
   ansible.builtin.template:
@@ -23,3 +32,4 @@
     dest: /etc/stns/server/stns.conf
     mode: '0644'
   notify: restart stns
+  when: stns_server_state != "absent"
