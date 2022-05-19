@@ -57,6 +57,7 @@ vars:
 | Name | Description |
 | ---- | --- |
 | stns_client_config | Generate to `/etc/stns/client/stns.conf` with TOML filter plugin (default: see `stns_client_config_default` variable)|
+| stns_client_state | latest/present/absent (default: latest) |
 | libnss_stns_version | libnss-stns-v2 package version (default: '') |
 | cache_stnsd_version | cache-stnsd package version (default: '') |
 
@@ -77,13 +78,14 @@ example:
 
 ## STNS server
 
-Install and configure STNS client.
+Install and configure STNS server.
 
 vars:
 
 | Name | Description |
 | ---- | --- |
-| stns_client_config | Generate to `/etc/stns/server/stns.conf` with TOML filter plugin (default: see `stns_server_config_default` variable)|
+| stns_server_config | Generate to `/etc/stns/server/stns.conf` with TOML filter plugin (default: see `stns_server_config_default` variable)|
+| stns_server_state | latest/present/absent (default: latest) |
 | stns_version | stns-v2 package version (default: '') |
 
 example:
