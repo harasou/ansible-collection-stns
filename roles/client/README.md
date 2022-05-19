@@ -1,0 +1,1 @@
+# STNS client role

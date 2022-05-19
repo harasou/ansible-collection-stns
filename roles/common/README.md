@@ -1,0 +1,1 @@
+# STNS common role

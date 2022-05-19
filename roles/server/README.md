@@ -1,0 +1,1 @@
+# STNS server role
