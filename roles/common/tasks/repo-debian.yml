@@ -7,5 +7,5 @@
 - name: (Debian/Ubuntu) add STNS repository
   ansible.builtin.apt_repository:
     filename: stns
-    repo: "deb https://repo.stns.jp/debian/ stns main"
+    repo: "deb https://repo.stns.jp/{{ ansible_distribution_release }}/ stns {{ ansible_distribution_release }}"
     mode: 0644
