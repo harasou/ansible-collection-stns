@@ -3,9 +3,8 @@
   hosts: all
 
   tasks:
-    - name: stopped stns
-      ansible.builtin.service:
-        name: stns
-        state: stopped
-        enabled: disable
+    - name: "uninstalled stns"
+      ansible.builtin.package:
+        name: "stns-v2{{ stns_version | default('') }}"
+        state: absent
       check_mode: true
