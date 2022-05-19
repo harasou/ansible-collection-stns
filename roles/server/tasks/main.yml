@@ -21,4 +21,5 @@
   ansible.builtin.template:
     src: stns.conf.j2
     dest: /etc/stns/server/stns.conf
+    mode: '0644'
   notify: restart stns

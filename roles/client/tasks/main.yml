@@ -1,5 +1,5 @@
 ---
-- name: install libnss-stns 
+- name: install libnss-stns
   ansible.builtin.package:
     name: "libnss-stns-v2{{ libnss_stns_version | default('') }}"
     state: present
@@ -10,7 +10,7 @@
     state: present
   notify: restart cache-stnsd
 
-- name: start cache-stnsd 
+- name: start cache-stnsd
   ansible.builtin.service:
     name: cache-stnsd
     state: started
@@ -26,3 +26,4 @@
   ansible.builtin.template:
     src: stns.conf.j2
     dest: /etc/stns/client/stns.conf
+    mode: '0644'

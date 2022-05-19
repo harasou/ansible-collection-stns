@@ -4,7 +4,7 @@
 
   tasks:
     - name: include server role
-      include_role:
+      ansible.builtin.include_role:
         name: server
       vars:
         stns_server_config:

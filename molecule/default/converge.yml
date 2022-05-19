@@ -13,4 +13,5 @@
     ansible.builtin.copy:
       src: user.conf
       dest: /etc/stns/server/conf.d/user.conf
+      mode: '0644'
     notify: restart stns
