@@ -1,4 +1,6 @@
 ansible-core
-molecule[docker]
+ansible-lint
+molecule[lint,docker]
 docker
 toml
+yamllint
