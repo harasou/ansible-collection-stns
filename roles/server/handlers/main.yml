@@ -3,3 +3,4 @@
   ansible.builtin.service:
     name: stns
     state: restarted
+  when: stns_server_state != 'absent'

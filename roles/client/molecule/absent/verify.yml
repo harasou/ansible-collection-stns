@@ -1,0 +1,16 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: "uninstalled libnss-stns"
+      ansible.builtin.package:
+        name: "libnss-stns-v2{{ libnss_stns_version | default('') }}"
+        state: absent
+      check_mode: true
+
+    - name: "uninstalled cache-stnsd"
+      ansible.builtin.package:
+        name: "cache-stnsd{{ cache_stnsd_version | default('') }}"
+        state: absent
+      check_mode: true

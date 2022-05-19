@@ -1,0 +1,10 @@
+---
+- name: molecule converge
+  hosts: all
+
+  tasks:
+    - name: remove client
+      ansible.builtin.include_role:
+        name: client
+      vars:
+        stns_client_state: absent

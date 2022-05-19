@@ -1,0 +1,8 @@
+---
+- name: molecule prepare
+  hosts: all
+
+  tasks:
+    - name: install server
+      ansible.builtin.include_role:
+        name: server

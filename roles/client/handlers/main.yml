@@ -3,3 +3,4 @@
   ansible.builtin.service:
     name: cache-stnsd
     state: restarted
+  when: stns_client_state != 'absent'

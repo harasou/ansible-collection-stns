@@ -1,0 +1,10 @@
+---
+- name: molecule verify
+  hosts: all
+
+  tasks:
+    - name: "uninstalled stns"
+      ansible.builtin.package:
+        name: "stns-v2{{ stns_version | default('') }}"
+        state: absent
+      check_mode: true

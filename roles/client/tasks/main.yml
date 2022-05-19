@@ -1,13 +1,13 @@
 ---
-- name: install libnss-stns
+- name: "{{ stns_client_state }} libnss-stns"
   ansible.builtin.package:
     name: "libnss-stns-v2{{ libnss_stns_version | default('') }}"
-    state: present
+    state: "{{ stns_client_state }}"
 
-- name: install cache-stnsd
+- name: "{{ stns_client_state }} cache-stnsd"
   ansible.builtin.package:
     name: "cache-stnsd{{ cache_stnsd_version | default('') }}"
-    state: present
+    state: "{{ stns_client_state }}"
   notify: restart cache-stnsd
 
 - name: start cache-stnsd
@@ -15,15 +15,8 @@
     name: cache-stnsd
     state: started
     enabled: true
+  when: stns_client_state != 'absent'
 
-- name: create a STNS client directory
-  ansible.builtin.file:
-    path: /etc/stns/client
-    state: directory
-    mode: '0755'
-
-- name: config STNS client
-  ansible.builtin.template:
-    src: stns.conf.j2
-    dest: /etc/stns/client/stns.conf
-    mode: '0644'
+- name: config stns client
+  ansible.builtin.include_tasks: config.yml
+  when: stns_client_state != 'absent'

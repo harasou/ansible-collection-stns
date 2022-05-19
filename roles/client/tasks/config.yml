@@ -1,0 +1,12 @@
+---
+- name: create a STNS client directory
+  ansible.builtin.file:
+    path: /etc/stns/client
+    state: directory
+    mode: '0755'
+
+- name: config STNS client
+  ansible.builtin.template:
+    src: stns.conf.j2
+    dest: /etc/stns/client/stns.conf
+    mode: '0644'
