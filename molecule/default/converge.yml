@@ -5,10 +5,10 @@
   tasks:
   - name: include client role
     ansible.builtin.include_role:
-      name: stns.stns.client
+      name: takumakume.stns.client
   - name: include server role
     ansible.builtin.include_role:
-      name: stns.stns.server
+      name: takumakume.stns.server
   - name: add sample user
     ansible.builtin.copy:
       src: user.conf
