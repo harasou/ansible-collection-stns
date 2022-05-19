@@ -25,7 +25,7 @@ Ubuntu only. We want to support another OS in the future.
 
 This is because the hash of Ansible vars is not automatically merged.
 
-caution: `stns_client_config` and` stns_server_config` cannot be configured in multiple locations.
+caution: `stns_client_config` and `stns_server_config` cannot be configured in multiple locations.
 
 # Install
 
