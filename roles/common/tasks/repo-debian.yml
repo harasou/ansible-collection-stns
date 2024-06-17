@@ -1,11 +1,11 @@
 ---
 - name: (Debian/Ubuntu) add STNS repository key
-  ansible.builtin.apt_key:
+  ansible.builtin.get_url:
     url: https://repo.stns.jp/gpg/GPG-KEY-stns
-    state: present
+    dest: /etc/apt/keyrings/stns.asc
   become: true
 - name: (Debian/Ubuntu) add STNS repository
   ansible.builtin.apt_repository:
     filename: stns
-    repo: "deb https://repo.stns.jp/{{ ansible_distribution_release }}/ stns {{ ansible_distribution_release }}"
+    repo: "deb [signed-by=/etc/apt/keyrings/stns.asc] https://repo.stns.jp/{{ ansible_distribution_release }}/ stns {{ ansible_distribution_release }}"
     mode: 0644
